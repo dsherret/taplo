@@ -74,8 +74,10 @@ pub mod verify;
 #[cfg(feature = "schema")]
 pub mod schema;
 
+#[cfg(feature = "analytics")]
 pub mod analytics;
 pub mod dom;
+#[cfg(feature = "formatter")]
 pub mod formatter;
 pub mod parser;
 pub mod syntax;
@@ -87,7 +89,7 @@ pub use rowan;
 #[cfg(test)]
 mod tests;
 
-#[cfg(target_arch = "wasm32")]
+#[cfg(all(target_arch = "wasm32", feature = "wasm_bindgen"))]
 pub mod wasm;
 
 #[cfg(all(feature = "chrono", feature = "time"))]
